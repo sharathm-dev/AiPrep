@@ -17,9 +17,18 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      const allowed = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$/, '') : "*";
+      if (allowed === "*" || origin === allowed) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["content-type", "Authorization"],
+    credentials: true
   })
 );
 
