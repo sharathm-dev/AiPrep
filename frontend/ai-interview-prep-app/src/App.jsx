@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Home/Dashboard";
-import InterviewPrep from "./pages/InterviewPrep/InterviewPrep";
+import InterviewPrep from "./pages/InterviewPrep/interviewPrep";
 import UserProvider from "./context/userContext";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
